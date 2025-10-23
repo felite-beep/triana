@@ -106,10 +106,9 @@
 #musicButton {
   position: fixed;
   bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 22px;
-  background: rgba(255, 192, 203, 0.7);
+  right: 20px;
+  font-size: 20px;
+  background: rgba(255, 182, 193, 0.8); /* soft pink */
   border: none;
   border-radius: 50%;
   width: 45px;
@@ -120,14 +119,13 @@
 }
 
 #musicButton:hover {
-  background: rgba(255, 182, 193, 0.9);
-  transform: translateX(-50%) scale(1.1);
+  background: rgba(255, 105, 180, 0.9);
+  transform: scale(1.1);
 }
 
 #musicButton:active {
-  transform: translateX(-50%) scale(0.95);
+  transform: scale(0.9);
 }
-
 
   </style>
 </head>
@@ -156,25 +154,29 @@
     setInterval(createHeart, 2000);
   </script>
 
-  <!-- Musik autoplay -->
 <audio id="bgm" loop>
   <source src="master.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Play button -->
-<button id="playButton">🎶 Play Music</button>
+<button id="musicButton">▶️</button>
 
-  <script>
+<script>
   const audio = document.getElementById('bgm');
-  const btn = document.getElementById('playButton');
+  const btn = document.getElementById('musicButton');
+  let isPlaying = false;
 
   btn.addEventListener('click', () => {
-    audio.play().then(() => {
-      btn.style.opacity = '0';
-      setTimeout(() => btn.style.display = 'none', 600);
-    });
+    if (isPlaying) {
+      audio.pause();
+      btn.textContent = '▶️';
+    } else {
+      audio.play();
+      btn.textContent = '⏸️';
+    }
+    isPlaying = !isPlaying;
   });
 </script>
+
 
 </body>
 </html>
