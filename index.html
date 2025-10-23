@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I Love You Ria</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffeef2;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #333;
+    }
+    .scene {
+      position: relative;
+      width: 100%;
+      height: 70%;
+    }
+    .stickman {
+      position: absolute;
+      width: 40px;
+      height: 100px;
+      /* penggunaan “stick figure” sederhana: garis + kepala */
+    }
+    /* pria */
+    .man {
+      left: -50px; /* mulai di luar kiri */
+      bottom: 0;
+      animation: runMan 3s forwards ease-in;
+    }
+    /* wanita */
+    .woman {
+      right: -50px; /* mulai di luar kanan */
+      bottom: 0;
+      animation: runWoman 3s forwards ease-in;
+    }
+    /* menggambar stickman dengan CSS */
+    .stickman .head {
+      width: 20px;
+      height: 20px;
+      border: 3px solid #333;
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+    .stickman .body {
+      width: 3px;
+      height: 40px;
+      background-color: #333;
+      margin: 0 auto;
+    }
+    .stickman .arm,
+    .stickman .leg {
+      position: absolute;
+      width: 3px;
+      background-color: #333;
+    }
+    .stickman .arm.left {
+      height: 30px;
+      transform: rotate(-45deg);
+      transform-origin: top;
+      top: 25px;
+      left: -15px;
+    }
+    .stickman .arm.right {
+      height: 30px;
+      transform: rotate(45deg);
+      transform-origin: top;
+      top: 25px;
+      left: 15px;
+    }
+    .stickman .leg.left {
+      height: 35px;
+      transform: rotate(-30deg);
+      transform-origin: top;
+      top: 40px;
+      left: -5px;
+    }
+    .stickman .leg.right {
+      height: 35px;
+      transform: rotate(30deg);
+      transform-origin: top;
+      top: 40px;
+      left: 5px;
+    }
+
+    @keyframes runMan {
+      0% { left: -50px; }
+      70% { left: calc(50% - 60px); }
+      100% { left: calc(50% - 60px); } /* berhenti di tengah-kiri sedikit */
+    }
+    @keyframes runWoman {
+      0% { right: -50px; }
+      70% { right: calc(50% - 60px); }
+      100% { right: calc(50% - 60px); } /* berhenti di tengah-kanan sedikit */
+    }
+
+    /* setelah mereka “bertemu”, munculkan pelukan (sedikit zoom) dan hati */
+    .hug {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      left: calc(50% - 60px);
+      bottom: 20px;
+      opacity: 0;
+      transform: scale(0.5);
+      animation: hugAnim 2s forwards ease-out 3s; /* delay agar menunggu lari selesai */
+    }
+    @keyframes hugAnim {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      left: 50%;
+      top: -30px;
+      transform: translateX(-50%) rotate(45deg);
+      animation: heartAnim 1s infinite alternate ease-in-out 3.5s;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+    @keyframes heartAnim {
+      0% { transform: translateX(-50%) scale(1) rotate(45deg); }
+      100% { transform: translateX(-50%) scale(1.3) rotate(45deg); }
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 2em;
+      color: #e63946;
+      text-align: center;
+      opacity: 0;
+      animation: showMsg 1.5s forwards ease-in 4s;
+    }
+    @keyframes showMsg {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="stickman man">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm left"></div>
+      <div class="arm right"></div>
+      <div class="leg left"></div>
+      <div class="leg right"></div>
+    </div>
+    <div class="stickman woman">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm left"></div>
+      <div class="arm right"></div>
+      <div class="leg left"></div>
+      <div class="leg right"></div>
+    </div>
+
+    <div class="hug">
+      <div class="heart"></div>
+    </div>
+  </div>
+
+  <div class="message">I Love You Ria</div>
+
+  <script>
+    // Kamu bisa tambahkan efek suara atau tambahan JavaScript kecil jika mau
+  </script>
+</body>
+</html>
