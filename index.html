@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I Love You Ria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -24,8 +25,8 @@
         .scene-container {
             position: relative;
             width: 100%;
-            max-width: 900px;
-            height: 600px;
+            max-width: 1000px;
+            height: 700px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -35,208 +36,54 @@
         .couple-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 500px;
             display: flex;
             justify-content: center;
             align-items: flex-end;
         }
 
-        /* Boy character */
+        .character {
+            position: absolute;
+            bottom: 50px;
+            width: 200px;
+            height: 400px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            transition: all 1s ease;
+        }
+
         .boy {
-            position: absolute;
-            width: 120px;
-            height: 300px;
-            left: 30%;
+            left: 25%;
             transform: translateX(-50%);
+            background-image: url('https://i.ibb.co/0Qz0h9R/boy-standing.png');
             z-index: 2;
         }
 
-        .boy-body {
-            position: absolute;
-            width: 50px;
-            height: 150px;
-            background: #4a6fa5;
-            border-radius: 25px 25px 0 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .boy-head {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: #f9d5bb;
-            border-radius: 50%;
-            bottom: 150px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .boy-hair {
-            position: absolute;
-            width: 70px;
-            height: 30px;
-            background: #2c3e50;
-            border-radius: 35px 35px 0 0;
-            bottom: 185px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .boy-arm {
-            position: absolute;
-            width: 15px;
-            height: 80px;
-            background: #4a6fa5;
-            border-radius: 10px;
-            bottom: 120px;
-            transform-origin: top center;
-        }
-
-        .boy-arm.left {
-            left: 15px;
-            transform: rotate(-30deg);
-        }
-
-        .boy-arm.right {
-            right: 15px;
-            transform: rotate(30deg);
-        }
-
-        .boy-leg {
-            position: absolute;
-            width: 20px;
-            height: 100px;
-            background: #2c3e50;
-            border-radius: 10px 10px 0 0;
-            bottom: 0;
-            transform-origin: top center;
-        }
-
-        .boy-leg.left {
-            left: 15px;
-            transform: rotate(5deg);
-        }
-
-        .boy-leg.right {
-            right: 15px;
-            transform: rotate(-5deg);
-        }
-
-        /* Girl character */
         .girl {
-            position: absolute;
-            width: 120px;
-            height: 300px;
-            right: 30%;
+            right: 25%;
             transform: translateX(50%);
+            background-image: url('https://i.ibb.co/6nL7qJ0/girl-standing.png');
             z-index: 2;
         }
 
-        .girl-body {
+        .couple-hugging {
             position: absolute;
-            width: 50px;
-            height: 150px;
-            background: #e91e63;
-            border-radius: 25px 25px 0 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .girl-dress {
-            position: absolute;
-            width: 70px;
-            height: 100px;
-            background: #e91e63;
-            clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .girl-head {
-            position: absolute;
-            width: 55px;
-            height: 55px;
-            background: #f9d5bb;
-            border-radius: 50%;
-            bottom: 150px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .girl-hair {
-            position: absolute;
-            width: 65px;
-            height: 40px;
-            background: #8d6e63;
-            border-radius: 32px 32px 0 0;
-            bottom: 190px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .girl-ponytail {
-            position: absolute;
-            width: 25px;
-            height: 60px;
-            background: #8d6e63;
-            border-radius: 0 0 12px 12px;
-            bottom: 150px;
-            right: 5px;
-            transform: rotate(10deg);
-        }
-
-        .girl-arm {
-            position: absolute;
-            width: 12px;
-            height: 70px;
-            background: #f9d5bb;
-            border-radius: 10px;
-            bottom: 130px;
-            transform-origin: top center;
-        }
-
-        .girl-arm.left {
-            left: 15px;
-            transform: rotate(-30deg);
-        }
-
-        .girl-arm.right {
-            right: 15px;
-            transform: rotate(30deg);
-        }
-
-        .girl-leg {
-            position: absolute;
-            width: 15px;
-            height: 90px;
-            background: #f9d5bb;
-            border-radius: 10px 10px 0 0;
-            bottom: 0;
-            transform-origin: top center;
-        }
-
-        .girl-leg.left {
-            left: 20px;
-            transform: rotate(5deg);
-        }
-
-        .girl-leg.right {
-            right: 20px;
-            transform: rotate(-5deg);
+            bottom: 50px;
+            width: 400px;
+            height: 400px;
+            background-image: url('https://i.ibb.co/0Q4s9Y0/couple-hugging.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            opacity: 0;
+            z-index: 3;
         }
 
         /* Animations */
         @keyframes run-boy {
             0% {
-                left: -100px;
+                left: -200px;
             }
             100% {
                 left: 40%;
@@ -245,92 +92,57 @@
 
         @keyframes run-girl {
             0% {
-                right: -100px;
+                right: -200px;
             }
             100% {
                 right: 40%;
             }
         }
 
-        @keyframes run-legs {
-            0%, 100% {
-                transform: rotate(5deg);
-            }
-            50% {
-                transform: rotate(-15deg);
-            }
-        }
-
-        @keyframes run-arms {
-            0%, 100% {
-                transform: rotate(30deg);
-            }
-            50% {
-                transform: rotate(10deg);
-            }
-        }
-
-        .running .boy-leg {
-            animation: run-legs 0.4s infinite alternate;
-        }
-
-        .running .girl-leg {
-            animation: run-legs 0.4s infinite alternate;
-        }
-
-        .running .boy-arm {
-            animation: run-arms 0.4s infinite alternate;
-        }
-
-        .running .girl-arm {
-            animation: run-arms 0.4s infinite alternate;
-        }
-
-        /* Hug animation */
-        @keyframes move-together {
+        @keyframes fade-in {
             0% {
-                transform: translateX(-50%);
+                opacity: 0;
             }
             100% {
-                transform: translateX(0%);
+                opacity: 1;
             }
         }
 
-        .hugging .boy {
-            animation: move-together 1s forwards;
-        }
-
-        .hugging .girl {
-            animation: move-together 1s forwards;
-        }
-
-        .hugging .boy-arm.right {
-            animation: hug-arm 1s forwards;
-        }
-
-        .hugging .girl-arm.left {
-            animation: hug-arm 1s forwards;
-        }
-
-        @keyframes hug-arm {
+        @keyframes fade-out {
             0% {
-                transform: rotate(30deg);
+                opacity: 1;
             }
             100% {
-                transform: rotate(80deg);
+                opacity: 0;
             }
+        }
+
+        .running .boy {
+            animation: run-boy 3s forwards;
+        }
+
+        .running .girl {
+            animation: run-girl 3s forwards;
+        }
+
+        .hugging .couple-hugging {
+            animation: fade-in 1s forwards 0.5s;
+        }
+
+        .hugging .boy, .hugging .girl {
+            animation: fade-out 0.5s forwards;
         }
 
         /* Heart animation */
         .heart {
             position: absolute;
-            font-size: 50px;
+            font-size: 60px;
             color: #ff4d6d;
-            bottom: 250px;
+            bottom: 300px;
             opacity: 0;
             text-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
             filter: drop-shadow(0 0 10px rgba(255, 77, 109, 0.6));
-            z-index: 3;
+            z-index: 4;
         }
 
         @keyframes float-heart {
@@ -342,7 +154,7 @@
                 opacity: 1;
             }
             100% {
-                transform: translateY(-200px) scale(1.2);
+                transform: translateY(-250px) scale(1.2);
                 opacity: 0;
             }
         }
@@ -353,26 +165,26 @@
 
         /* Multiple hearts */
         .heart:nth-child(2) {
-            left: 45%;
+            left: 48%;
             animation-delay: 0.5s;
         }
 
         .heart:nth-child(3) {
-            left: 55%;
+            left: 52%;
             animation-delay: 1s;
         }
 
         /* Love message */
         .love-message {
             position: absolute;
-            bottom: 100px;
+            bottom: 150px;
             font-family: 'Dancing Script', cursive;
-            font-size: 52px;
+            font-size: 60px;
             color: #ff4d6d;
             text-shadow: 0 0 20px rgba(255, 77, 109, 0.7);
             opacity: 0;
             transition: opacity 2s ease-in-out;
-            z-index: 4;
+            z-index: 5;
         }
 
         .visible {
@@ -406,7 +218,7 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 80px;
+            height: 100px;
             background: rgba(255, 255, 255, 0.3);
             border-radius: 50% 50% 0 0;
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
@@ -421,6 +233,7 @@
             border-radius: 50%;
             opacity: 0;
             box-shadow: 0 0 10px white;
+            z-index: 4;
         }
 
         @keyframes sparkle {
@@ -437,39 +250,71 @@
                 transform: scale(0);
             }
         }
+
+        /* Background elements */
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .cloud:nth-child(1) {
+            width: 100px;
+            height: 40px;
+            top: 20%;
+            left: 10%;
+            animation: float-cloud 20s infinite linear;
+        }
+
+        .cloud:nth-child(2) {
+            width: 150px;
+            height: 60px;
+            top: 30%;
+            right: 10%;
+            animation: float-cloud 25s infinite linear reverse;
+        }
+
+        @keyframes float-cloud {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(30px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Loading message */
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #ff4d6d;
+            z-index: 100;
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="scene-container">
         <button class="restart-btn" onclick="restartAnimation()">Watch Again</button>
         
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        
         <div class="couple-container">
             <div class="ground"></div>
             
-            <!-- Boy -->
-            <div class="boy running" id="boy">
-                <div class="boy-hair"></div>
-                <div class="boy-head"></div>
-                <div class="boy-body"></div>
-                <div class="boy-arm left"></div>
-                <div class="boy-arm right"></div>
-                <div class="boy-leg left"></div>
-                <div class="boy-leg right"></div>
-            </div>
+            <!-- Individual characters -->
+            <div class="character boy" id="boy"></div>
+            <div class="character girl" id="girl"></div>
             
-            <!-- Girl -->
-            <div class="girl running" id="girl">
-                <div class="girl-hair"></div>
-                <div class="girl-ponytail"></div>
-                <div class="girl-head"></div>
-                <div class="girl-body"></div>
-                <div class="girl-dress"></div>
-                <div class="girl-arm left"></div>
-                <div class="girl-arm right"></div>
-                <div class="girl-leg left"></div>
-                <div class="girl-leg right"></div>
-            </div>
+            <!-- Hugging couple -->
+            <div class="couple-hugging" id="coupleHugging"></div>
             
             <!-- Hearts -->
             <div class="heart" id="heart1">♥</div>
@@ -483,26 +328,69 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            startAnimation();
+            // Check if images are loaded
+            const images = [
+                'https://i.ibb.co/0Qz0h9R/boy-standing.png',
+                'https://i.ibb.co/6nL7qJ0/girl-standing.png',
+                'https://i.ibb.co/0Q4s9Y0/couple-hugging.png'
+            ];
+            
+            let loadedCount = 0;
+            
+            images.forEach(src => {
+                const img = new Image();
+                img.onload = () => {
+                    loadedCount++;
+                    if (loadedCount === images.length) {
+                        document.getElementById('loading').style.display = 'none';
+                        startAnimation();
+                    }
+                };
+                img.onerror = () => {
+                    // If images fail to load, use CSS-drawn characters as fallback
+                    console.error('Failed to load image: ' + src);
+                    loadedCount++;
+                    if (loadedCount === images.length) {
+                        document.getElementById('loading').style.display = 'none';
+                        startAnimation();
+                    }
+                };
+                img.src = src;
+            });
+            
+            // Fallback in case images don't load within 5 seconds
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                startAnimation();
+            }, 5000);
         });
 
         function startAnimation() {
             const boy = document.getElementById('boy');
             const girl = document.getElementById('girl');
+            const coupleHugging = document.getElementById('coupleHugging');
             const heart1 = document.getElementById('heart1');
             const heart2 = document.getElementById('heart2');
             const heart3 = document.getElementById('heart3');
             const loveMessage = document.getElementById('loveMessage');
             
             // Reset positions and states
+            boy.style.opacity = '1';
+            girl.style.opacity = '1';
+            coupleHugging.style.opacity = '0';
             boy.classList.add('running');
             girl.classList.add('running');
             boy.classList.remove('hugging');
             girl.classList.remove('hugging');
+            coupleHugging.classList.remove('hugging');
             heart1.classList.remove('floating');
             heart2.classList.remove('floating');
             heart3.classList.remove('floating');
             loveMessage.classList.remove('visible');
+            
+            // Remove any existing sparkles
+            const sparkles = document.querySelectorAll('.sparkle');
+            sparkles.forEach(sparkle => sparkle.remove());
             
             // Animate boy running from left
             boy.style.animation = 'run-boy 3s forwards';
@@ -512,13 +400,10 @@
             
             // After they meet in the center
             setTimeout(() => {
-                // Stop running animations
-                boy.classList.remove('running');
-                girl.classList.remove('running');
-                
                 // Start hugging
                 boy.classList.add('hugging');
                 girl.classList.add('hugging');
+                coupleHugging.classList.add('hugging');
                 
                 // Make hearts float
                 setTimeout(() => {
@@ -538,11 +423,11 @@
 
         function createSparkles() {
             const container = document.querySelector('.couple-container');
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 25; i++) {
                 const sparkle = document.createElement('div');
                 sparkle.className = 'sparkle';
                 sparkle.style.left = Math.random() * 100 + '%';
-                sparkle.style.bottom = Math.random() * 100 + 'px';
+                sparkle.style.bottom = Math.random() * 200 + 100 + 'px';
                 sparkle.style.animation = `sparkle ${1 + Math.random() * 2}s ease-in-out ${Math.random() * 2}s infinite`;
                 container.appendChild(sparkle);
             }
@@ -557,5 +442,8 @@
             startAnimation();
         }
     </script>
+    
+    <!-- Loading message -->
+    <div class="loading" id="loading">Loading romantic scene...</div>
 </body>
 </html>
