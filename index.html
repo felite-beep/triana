@@ -103,30 +103,12 @@
       }
     }
 
-audio {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 100px;
-  height: 32px; /* fix height so it doesn't resize */
-  opacity: 0.7;
-  border-radius: 20px;
-  background-color: rgba(255, 182, 193, 0.3);
-}
-
-audio::-webkit-media-controls-panel {
-  background-color: rgba(255, 182, 193, 0.3);
-}
-
-audio:focus {
-  outline: none; /* remove blue border on click */
-}
+audio { position: fixed; bottom: 20px; right: 20px; width: 100px; opacity: 0.7; }
 
   </style>
 </head>
 <body>
 
-  <!-- GIF dan teks -->
   <div class="gif-container">
     <img src="unch.gif" alt="Cute Couple GIF">
   </div>
@@ -135,7 +117,6 @@ audio:focus {
   <p>In every quiet moment, my heart whispers one wish —<br>
      to hug you, endlessly, like the world stops for us. 🤗</p>
 
-  <!-- Floating hearts -->
   <script>
     const createHeart = () => {
       const heart = document.createElement('div');
