@@ -103,28 +103,12 @@
       }
     }
 
-#musicButton {
+audio {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  font-size: 20px;
-  background: rgba(255, 182, 193, 0.8); /* soft pink */
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-  box-shadow: 0 0 6px rgba(255, 182, 193, 0.8);
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-#musicButton:hover {
-  background: rgba(255, 105, 180, 0.9);
-  transform: scale(1.1);
-}
-
-#musicButton:active {
-  transform: scale(0.9);
+  width: 100px;
+  opacity: 0.7;
 }
 
   </style>
@@ -154,29 +138,9 @@
     setInterval(createHeart, 2000);
   </script>
 
-<audio id="bgm" loop>
+<audio controls loop>
   <source src="master.mp3" type="audio/mpeg">
 </audio>
-
-<button id="musicButton">▶️</button>
-
-<script>
-  const audio = document.getElementById('bgm');
-  const btn = document.getElementById('musicButton');
-  let isPlaying = false;
-
-  btn.addEventListener('click', () => {
-    if (isPlaying) {
-      audio.pause();
-      btn.textContent = '▶️';
-    } else {
-      audio.play();
-      btn.textContent = '⏸️';
-    }
-    isPlaying = !isPlaying;
-  });
-</script>
-
 
 </body>
 </html>
