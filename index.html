@@ -23,14 +23,19 @@
 
     .gif-container {
       position: relative;
+      padding: 10px;
+      border-radius: 20px;
       animation: fadeIn 2s ease-in;
+      background: rgba(255, 255, 255, 0.15);
+      animation: glowingBorder 6s ease-in-out infinite alternate;
     }
 
     img {
-      width: 220px; /* ukuran lebih kecil */
-      border-radius: 18px;
-      box-shadow: 0 0 25px rgba(255, 192, 203, 0.5);
+      width: 220px;
+      border-radius: 15px;
       animation: float 4s ease-in-out infinite;
+      display: block;
+      box-shadow: 0 0 25px rgba(255, 192, 203, 0.5);
     }
 
     h1 {
@@ -50,7 +55,6 @@
       max-width: 300px;
     }
 
-    /* Floating hearts */
     .heart {
       position: absolute;
       color: #ff6b9a;
@@ -84,12 +88,26 @@
         opacity: 0;
       }
     }
+
+    @keyframes glowingBorder {
+      0% {
+        box-shadow: 0 0 15px rgba(255, 192, 203, 0.4),
+                    0 0 30px rgba(255, 105, 180, 0.3),
+                    0 0 50px rgba(255, 182, 193, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 25px rgba(255, 182, 193, 0.6),
+                    0 0 60px rgba(255, 105, 180, 0.5),
+                    0 0 80px rgba(255, 192, 203, 0.7);
+      }
+    }
   </style>
 </head>
 <body>
 
+  <!-- GIF dan teks -->
   <div class="gif-container">
-    <img src="ilu2.gif" alt="Lovely Couple">
+    <img src="ilu2.gif" alt="Cute Couple GIF">
   </div>
 
   <h1>Always You ❤️</h1>
@@ -109,6 +127,11 @@
     };
     setInterval(createHeart, 600);
   </script>
+
+  <!-- Musik autoplay -->
+  <audio autoplay loop hidden>
+    <source src="LINK_LAGU_KAMU" type="audio/mpeg">
+  </audio>
 
 </body>
 </html>
