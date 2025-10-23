@@ -1,475 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Love You Ria</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Love You</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0, #fff5e6);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #fbe8e8, #f9d2e5, #f1bdd0);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
 
-        .scene-container {
-            position: relative;
-            width: 100%;
-            max-width: 1000px;
-            height: 700px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    .gif-container {
+      position: relative;
+      animation: fadeIn 2s ease-in;
+    }
 
-        .couple-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-        }
+    img {
+      width: 220px; /* ukuran lebih kecil */
+      border-radius: 18px;
+      box-shadow: 0 0 25px rgba(255, 192, 203, 0.5);
+      animation: float 4s ease-in-out infinite;
+    }
 
-        .character {
-            position: absolute;
-            bottom: 50px;
-            width: 180px;
-            height: 380px;
-            z-index: 2;
-        }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #d63384;
+      font-size: 2.3em;
+      margin-top: 22px;
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
 
-        .boy {
-            left: 25%;
-            transform: translateX(-50%);
-        }
+    p {
+      color: #5a2d43;
+      font-size: 1em;
+      margin-top: 5px;
+      opacity: 0.85;
+      text-align: center;
+      max-width: 300px;
+    }
 
-        .girl {
-            right: 25%;
-            transform: translateX(50%);
-        }
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff6b9a;
+      font-size: 16px;
+      opacity: 0.8;
+      animation: floatHearts 6s linear infinite;
+    }
 
-        .couple-hugging {
-            position: absolute;
-            bottom: 50px;
-            width: 400px;
-            height: 400px;
-            opacity: 0;
-            z-index: 3;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        /* Animations */
-        @keyframes run-boy {
-            0% {
-                left: -200px;
-            }
-            100% {
-                left: 40%;
-            }
-        }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff80b0, 0 0 20px #ffb6c1; }
+      to { text-shadow: 0 0 25px #ff4d94, 0 0 50px #ff80b0; }
+    }
 
-        @keyframes run-girl {
-            0% {
-                right: -200px;
-            }
-            100% {
-                right: 40%;
-            }
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
 
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fade-out {
-            0% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-
-        .running .boy {
-            animation: run-boy 3s forwards;
-        }
-
-        .running .girl {
-            animation: run-girl 3s forwards;
-        }
-
-        .hugging .couple-hugging {
-            animation: fade-in 1s forwards 0.5s;
-        }
-
-        .hugging .boy, .hugging .girl {
-            animation: fade-out 0.5s forwards;
-        }
-
-        /* Heart animation */
-        .heart {
-            position: absolute;
-            font-size: 60px;
-            color: #ff4d6d;
-            bottom: 300px;
-            opacity: 0;
-            text-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
-            filter: drop-shadow(0 0 10px rgba(255, 77, 109, 0.6));
-            z-index: 4;
-        }
-
-        @keyframes float-heart {
-            0% {
-                transform: translateY(0) scale(0.8);
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-250px) scale(1.2);
-                opacity: 0;
-            }
-        }
-
-        .floating {
-            animation: float-heart 4s ease-in-out forwards;
-        }
-
-        /* Multiple hearts */
-        .heart:nth-child(2) {
-            left: 48%;
-            animation-delay: 0.5s;
-        }
-
-        .heart:nth-child(3) {
-            left: 52%;
-            animation-delay: 1s;
-        }
-
-        /* Love message */
-        .love-message {
-            position: absolute;
-            bottom: 150px;
-            font-family: 'Dancing Script', cursive;
-            font-size: 60px;
-            color: #ff4d6d;
-            text-shadow: 0 0 20px rgba(255, 77, 109, 0.7);
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            z-index: 5;
-        }
-
-        .visible {
-            opacity: 1;
-        }
-
-        /* Restart button */
-        .restart-btn {
-            position: absolute;
-            top: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-family: 'Dancing Script', cursive;
-            font-size: 24px;
-            color: #ff4d6d;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-
-        .restart-btn:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: scale(1.05);
-        }
-
-        /* Ground */
-        .ground {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50% 50% 0 0;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Sparkles */
-        .sparkle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0;
-            box-shadow: 0 0 10px white;
-            z-index: 4;
-        }
-
-        @keyframes sparkle {
-            0% {
-                opacity: 0;
-                transform: scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0);
-            }
-        }
-
-        /* Background elements */
-        .cloud {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .cloud:nth-child(1) {
-            width: 100px;
-            height: 40px;
-            top: 20%;
-            left: 10%;
-            animation: float-cloud 20s infinite linear;
-        }
-
-        .cloud:nth-child(2) {
-            width: 150px;
-            height: 60px;
-            top: 30%;
-            right: 10%;
-            animation: float-cloud 25s infinite linear reverse;
-        }
-
-        @keyframes float-cloud {
-            0% {
-                transform: translateX(0);
-            }
-            50% {
-                transform: translateX(30px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-    </style>
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.6);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="scene-container">
-        <button class="restart-btn" onclick="restartAnimation()">Watch Again</button>
-        
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        
-        <div class="couple-container">
-            <div class="ground"></div>
-            
-            <!-- Boy Character -->
-            <div class="character boy" id="boy">
-                <svg viewBox="0 0 180 380" preserveAspectRatio="xMidYMid meet">
-                    <!-- Hair -->
-                    <path d="M70,70 Q90,50 110,70 Q130,90 120,110 Q110,130 90,120 Q70,130 60,110 Q50,90 70,70" fill="#3a2c1e" />
-                    
-                    <!-- Head -->
-                    <circle cx="90" cy="100" r="30" fill="#f9d5bb" />
-                    
-                    <!-- Body -->
-                    <rect x="75" y="130" width="30" height="80" fill="#4a6fa5" rx="5" />
-                    
-                    <!-- Arms -->
-                    <path d="M75,150 Q55,170 65,190 Q75,210 95,200" fill="#4a6fa5" />
-                    <path d="M105,150 Q125,170 115,190 Q105,210 85,200" fill="#4a6fa5" />
-                    
-                    <!-- Legs -->
-                    <path d="M75,210 Q65,250 70,290 Q80,310 90,300" fill="#2c3e50" />
-                    <path d="M105,210 Q115,250 110,290 Q100,310 90,300" fill="#2c3e50" />
-                    
-                    <!-- Face -->
-                    <circle cx="80" cy="95" r="3" fill="#333" />
-                    <circle cx="100" cy="95" r="3" fill="#333" />
-                    <path d="M85,110 Q90,115 95,110" stroke="#333" stroke-width="2" fill="none" />
-                </svg>
-            </div>
-            
-            <!-- Girl Character -->
-            <div class="character girl" id="girl">
-                <svg viewBox="0 0 180 380" preserveAspectRatio="xMidYMid meet">
-                    <!-- Hair -->
-                    <path d="M70,70 Q90,40 110,70 Q130,100 120,130 Q110,160 90,150 Q70,160 60,130 Q50,100 70,70" fill="#8d6e63" />
-                    
-                    <!-- Head -->
-                    <circle cx="90" cy="100" r="30" fill="#f9d5bb" />
-                    
-                    <!-- Body -->
-                    <path d="M75,130 Q65,150 75,170 Q85,190 95,190 Q105,190 115,170 Q125,150 115,130 L75,130" fill="#e91e63" />
-                    
-                    <!-- Dress -->
-                    <path d="M75,170 Q70,200 80,230 Q90,250 100,250 Q110,250 120,230 Q130,200 125,170 L75,170" fill="#e91e63" />
-                    
-                    <!-- Arms -->
-                    <path d="M75,150 Q55,160 65,180 Q75,200 95,190" fill="#f9d5bb" />
-                    <path d="M105,150 Q125,160 115,180 Q105,200 85,190" fill="#f9d5bb" />
-                    
-                    <!-- Legs -->
-                    <path d="M85,230 Q80,270 85,310 Q90,330 95,320" fill="#f9d5bb" />
-                    <path d="M95,230 Q100,270 95,310 Q90,330 85,320" fill="#f9d5bb" />
-                    
-                    <!-- Face -->
-                    <circle cx="80" cy="95" r="3" fill="#333" />
-                    <circle cx="100" cy="95" r="3" fill="#333" />
-                    <path d="M85,110 Q90,115 95,110" stroke="#333" stroke-width="2" fill="none" />
-                </svg>
-            </div>
-            
-            <!-- Hugging Couple -->
-            <div class="couple-hugging" id="coupleHugging">
-                <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
-                    <!-- Combined silhouette of hugging couple -->
-                    <!-- Boy in hug -->
-                    <path d="M150,100 Q170,80 190,100 Q210,120 200,140 Q190,160 170,150 Q150,160 140,140 Q130,120 150,100" fill="#3a2c1e" />
-                    <circle cx="170" cy="130" r="30" fill="#f9d5bb" />
-                    <path d="M155,160 Q145,180 160,200 Q175,220 185,210 Q195,200 190,180 Q185,160 175,160" fill="#4a6fa5" />
-                    <path d="M155,160 Q135,170 140,190 Q145,210 160,220 Q175,230 185,220" fill="#4a6fa5" />
-                    <path d="M185,210 Q195,230 190,250 Q185,270 175,280 Q165,290 170,310 Q175,330 180,320" fill="#2c3e50" />
-                    <path d="M175,160 Q195,150 200,170 Q205,190 195,210" fill="#4a6fa5" />
-                    
-                    <!-- Girl in hug -->
-                    <path d="M250,100 Q270,80 290,100 Q310,120 300,140 Q290,160 270,150 Q250,160 240,140 Q230,120 250,100" fill="#8d6e63" />
-                    <circle cx="270" cy="130" r="30" fill="#f9d5bb" />
-                    <path d="M255,160 Q245,180 260,200 Q275,220 285,210 Q295,200 290,180 Q285,160 275,160" fill="#e91e63" />
-                    <path d="M255,160 Q235,170 240,190 Q245,210 260,220 Q275,230 285,220" fill="#e91e63" />
-                    <path d="M285,210 Q295,230 290,250 Q285,270 275,280 Q265,290 270,310 Q275,330 280,320" fill="#f9d5bb" />
-                    <path d="M275,160 Q295,150 300,170 Q305,190 295,210" fill="#e91e63" />
-                    
-                    <!-- Hugging arms -->
-                    <path d="M185,210 Q205,220 220,210 Q235,200 240,180 Q245,160 255,160" fill="#f9d5bb" />
-                    <path d="M275,160 Q285,160 295,170 Q305,180 300,200 Q295,220 285,210" fill="#4a6fa5" />
-                    
-                    <!-- Faces -->
-                    <circle cx="160" cy="125" r="3" fill="#333" />
-                    <circle cx="180" cy="125" r="3" fill="#333" />
-                    <path d="M165,135 Q170,140 175,135" stroke="#333" stroke-width="2" fill="none" />
-                    
-                    <circle cx="260" cy="125" r="3" fill="#333" />
-                    <circle cx="280" cy="125" r="3" fill="#333" />
-                    <path d="M265,135 Q270,140 275,135" stroke="#333" stroke-width="2" fill="none" />
-                </svg>
-            </div>
-            
-            <!-- Hearts -->
-            <div class="heart" id="heart1">♥</div>
-            <div class="heart" id="heart2">♥</div>
-            <div class="heart" id="heart3">♥</div>
-            
-            <!-- Love Message -->
-            <div class="love-message" id="loveMessage">I Love You Ria</div>
-        </div>
-    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            startAnimation();
-        });
+  <div class="gif-container">
+    <img src="ilu2.gif" alt="Lovely Couple">
+  </div>
 
-        function startAnimation() {
-            const boy = document.getElementById('boy');
-            const girl = document.getElementById('girl');
-            const coupleHugging = document.getElementById('coupleHugging');
-            const heart1 = document.getElementById('heart1');
-            const heart2 = document.getElementById('heart2');
-            const heart3 = document.getElementById('heart3');
-            const loveMessage = document.getElementById('loveMessage');
-            
-            // Reset positions and states
-            boy.style.opacity = '1';
-            girl.style.opacity = '1';
-            coupleHugging.style.opacity = '0';
-            boy.classList.add('running');
-            girl.classList.add('running');
-            boy.classList.remove('hugging');
-            girl.classList.remove('hugging');
-            coupleHugging.classList.remove('hugging');
-            heart1.classList.remove('floating');
-            heart2.classList.remove('floating');
-            heart3.classList.remove('floating');
-            loveMessage.classList.remove('visible');
-            
-            // Remove any existing sparkles
-            const sparkles = document.querySelectorAll('.sparkle');
-            sparkles.forEach(sparkle => sparkle.remove());
-            
-            // Animate boy running from left
-            boy.style.animation = 'run-boy 3s forwards';
-            
-            // Animate girl running from right
-            girl.style.animation = 'run-girl 3s forwards';
-            
-            // After they meet in the center
-            setTimeout(() => {
-                // Start hugging
-                boy.classList.add('hugging');
-                girl.classList.add('hugging');
-                coupleHugging.classList.add('hugging');
-                
-                // Make hearts float
-                setTimeout(() => {
-                    heart1.classList.add('floating');
-                    heart2.classList.add('floating');
-                    heart3.classList.add('floating');
-                }, 500);
-                
-                // Show the love message after a short delay
-                setTimeout(() => {
-                    loveMessage.classList.add('visible');
-                    createSparkles();
-                }, 1500);
-                
-            }, 3000);
-        }
+  <h1>Always You ❤️</h1>
+  <p>Di setiap detik yang tenang, di setiap tawa yang hangat...<br>
+     hanya kamu yang ada di hatiku.</p>
 
-        function createSparkles() {
-            const container = document.querySelector('.couple-container');
-            for (let i = 0; i < 25; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = Math.random() * 100 + '%';
-                sparkle.style.bottom = Math.random() * 200 + 100 + 'px';
-                sparkle.style.animation = `sparkle ${1 + Math.random() * 2}s ease-in-out ${Math.random() * 2}s infinite`;
-                container.appendChild(sparkle);
-            }
-        }
+  <!-- Floating hearts -->
+  <script>
+    const createHeart = () => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    };
+    setInterval(createHeart, 600);
+  </script>
 
-        function restartAnimation() {
-            // Remove sparkles
-            const sparkles = document.querySelectorAll('.sparkle');
-            sparkles.forEach(sparkle => sparkle.remove());
-            
-            // Restart animation
-            startAnimation();
-        }
-    </script>
 </body>
 </html>
