@@ -31,7 +31,7 @@
     }
 
     img {
-      width: 280px;
+      width: 320px;
       border-radius: 15px;
       animation: float 4s ease-in-out infinite;
       display: block;
@@ -64,6 +64,45 @@
       animation: floatHearts 24s linear infinite;
     }
 
+    /* Heartbeat animation container */
+    .heartbeat-container {
+      width: 320px;
+      height: 50px;
+      position: relative;
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Heartbeat line */
+    .heartbeat-line {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ff6b9a, transparent);
+      z-index: 1;
+    }
+
+    /* Heartbeat waves */
+    .heartbeat-wave {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ff6b9a;
+      opacity: 0;
+      z-index: 2;
+    }
+
+    .heartbeat-wave.left {
+      animation: heartbeatLeft 2s ease-in-out infinite;
+    }
+
+    .heartbeat-wave.right {
+      animation: heartbeatRight 2s ease-in-out infinite;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -79,16 +118,16 @@
       50% { transform: translateY(0px); }
     }
 
-@keyframes floatHearts {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-120vh) scale(2.6);
-    opacity: 0;
-  }
-}
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(2.6);
+        opacity: 0;
+      }
+    }
 
     @keyframes glowingBorder {
       0% {
@@ -103,62 +142,44 @@
       }
     }
 
-audio { position: fixed; bottom: 20px; right: 20px; width: 100px; opacity: 0.7; }
+    /* Heartbeat animations */
+    @keyframes heartbeatLeft {
+      0% {
+        transform: translateX(-160px) scale(0.8);
+        opacity: 0;
+      }
+      50% {
+        transform: translateX(0) scale(1.2);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateX(0) scale(1);
+        opacity: 0;
+      }
+    }
 
-    /* --- Heartbeat animation --- */
-.heartbeat-container {
-  position: relative;
-  width: 320px;
-  height: 40px;
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    @keyframes heartbeatRight {
+      0% {
+        transform: translateX(160px) scale(0.8);
+        opacity: 0;
+      }
+      50% {
+        transform: translateX(0) scale(1.2);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateX(0) scale(1);
+        opacity: 0;
+      }
+    }
 
-.heartbeat {
-  position: absolute;
-  width: 50%;
-  height: 2px;
-  background: linear-gradient(to right, transparent, #ff5c93, #ffb6c1);
-  animation: heartbeatMove 2.2s ease-in-out infinite;
-  opacity: 0.9;
-}
-
-.heartbeat.left {
-  left: 0;
-  transform-origin: right;
-  background: linear-gradient(to left, transparent, #ff5c93, #ffb6c1);
-  animation-delay: 0s;
-}
-
-.heartbeat.right {
-  right: 0;
-  transform-origin: left;
-  background: linear-gradient(to right, transparent, #ff5c93, #ffb6c1);
-  animation-delay: 0s;
-}
-
-/* subtle pulse animation */
-@keyframes heartbeatMove {
-  0%, 100% {
-    transform: scaleX(1) translateY(0);
-    opacity: 0.7;
-  }
-  25% {
-    transform: scaleX(1.3) translateY(-3px);
-    opacity: 1;
-  }
-  50% {
-    transform: scaleX(0.9) translateY(2px);
-    opacity: 0.6;
-  }
-  75% {
-    transform: scaleX(1.4) translateY(-4px);
-    opacity: 1;
-  }
-}
-
+    audio { 
+      position: fixed; 
+      bottom: 20px; 
+      right: 20px; 
+      width: 100px; 
+      opacity: 0.7; 
+    }
   </style>
 </head>
 <body>
@@ -167,10 +188,12 @@ audio { position: fixed; bottom: 20px; right: 20px; width: 100px; opacity: 0.7; 
     <img src="unch.gif" alt="Cute Couple GIF">
   </div>
 
+  <!-- Heartbeat animation added here -->
   <div class="heartbeat-container">
-  <div class="heartbeat left"></div>
-  <div class="heartbeat right"></div>
-</div>
+    <div class="heartbeat-line"></div>
+    <div class="heartbeat-wave left"></div>
+    <div class="heartbeat-wave right"></div>
+  </div>
 
   <h1>Always You ❤️</h1>
   <p>Ever since you came into my life, my heart has just one wish —<br>
@@ -189,9 +212,9 @@ audio { position: fixed; bottom: 20px; right: 20px; width: 100px; opacity: 0.7; 
     setInterval(createHeart, 2000);
   </script>
 
-<audio controls loop>
-  <source src="master.mp3" type="audio/mpeg">
-</audio>
+  <audio controls loop>
+    <source src="master.mp3" type="audio/mpeg">
+  </audio>
 
 </body>
 </html>
