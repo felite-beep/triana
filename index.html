@@ -103,32 +103,31 @@
       }
     }
 
-    #playButton {
+#musicButton {
   position: fixed;
-  bottom: 30px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 182, 193, 0.8); /* soft pink */
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 22px;
+  background: rgba(255, 192, 203, 0.7);
   border: none;
-  padding: 12px 24px;
-  border-radius: 30px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(255, 192, 203, 0.7);
-  transition: all 0.6s ease;
-  backdrop-filter: blur(6px);
+  box-shadow: 0 0 6px rgba(255, 182, 193, 0.8);
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-#playButton:hover {
-  background: rgba(255, 105, 180, 0.9);
-  transform: translateX(-50%) scale(1.05);
+#musicButton:hover {
+  background: rgba(255, 182, 193, 0.9);
+  transform: translateX(-50%) scale(1.1);
 }
 
-#playButton:active {
+#musicButton:active {
   transform: translateX(-50%) scale(0.95);
 }
+
 
   </style>
 </head>
