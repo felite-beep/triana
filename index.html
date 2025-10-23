@@ -45,26 +45,19 @@
         .character {
             position: absolute;
             bottom: 50px;
-            width: 200px;
-            height: 400px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: bottom;
-            transition: all 1s ease;
+            width: 180px;
+            height: 380px;
+            z-index: 2;
         }
 
         .boy {
             left: 25%;
             transform: translateX(-50%);
-            background-image: url('https://i.ibb.co/0Qz0h9R/boy-standing.png');
-            z-index: 2;
         }
 
         .girl {
             right: 25%;
             transform: translateX(50%);
-            background-image: url('https://i.ibb.co/6nL7qJ0/girl-standing.png');
-            z-index: 2;
         }
 
         .couple-hugging {
@@ -72,10 +65,6 @@
             bottom: 50px;
             width: 400px;
             height: 400px;
-            background-image: url('https://i.ibb.co/0Q4s9Y0/couple-hugging.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: bottom;
             opacity: 0;
             z-index: 3;
         }
@@ -286,17 +275,6 @@
                 transform: translateX(0);
             }
         }
-
-        /* Loading message */
-        .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: #ff4d6d;
-            z-index: 100;
-        }
     </style>
 </head>
 <body>
@@ -309,12 +287,97 @@
         <div class="couple-container">
             <div class="ground"></div>
             
-            <!-- Individual characters -->
-            <div class="character boy" id="boy"></div>
-            <div class="character girl" id="girl"></div>
+            <!-- Boy Character -->
+            <div class="character boy" id="boy">
+                <svg viewBox="0 0 180 380" preserveAspectRatio="xMidYMid meet">
+                    <!-- Hair -->
+                    <path d="M70,70 Q90,50 110,70 Q130,90 120,110 Q110,130 90,120 Q70,130 60,110 Q50,90 70,70" fill="#3a2c1e" />
+                    
+                    <!-- Head -->
+                    <circle cx="90" cy="100" r="30" fill="#f9d5bb" />
+                    
+                    <!-- Body -->
+                    <rect x="75" y="130" width="30" height="80" fill="#4a6fa5" rx="5" />
+                    
+                    <!-- Arms -->
+                    <path d="M75,150 Q55,170 65,190 Q75,210 95,200" fill="#4a6fa5" />
+                    <path d="M105,150 Q125,170 115,190 Q105,210 85,200" fill="#4a6fa5" />
+                    
+                    <!-- Legs -->
+                    <path d="M75,210 Q65,250 70,290 Q80,310 90,300" fill="#2c3e50" />
+                    <path d="M105,210 Q115,250 110,290 Q100,310 90,300" fill="#2c3e50" />
+                    
+                    <!-- Face -->
+                    <circle cx="80" cy="95" r="3" fill="#333" />
+                    <circle cx="100" cy="95" r="3" fill="#333" />
+                    <path d="M85,110 Q90,115 95,110" stroke="#333" stroke-width="2" fill="none" />
+                </svg>
+            </div>
             
-            <!-- Hugging couple -->
-            <div class="couple-hugging" id="coupleHugging"></div>
+            <!-- Girl Character -->
+            <div class="character girl" id="girl">
+                <svg viewBox="0 0 180 380" preserveAspectRatio="xMidYMid meet">
+                    <!-- Hair -->
+                    <path d="M70,70 Q90,40 110,70 Q130,100 120,130 Q110,160 90,150 Q70,160 60,130 Q50,100 70,70" fill="#8d6e63" />
+                    
+                    <!-- Head -->
+                    <circle cx="90" cy="100" r="30" fill="#f9d5bb" />
+                    
+                    <!-- Body -->
+                    <path d="M75,130 Q65,150 75,170 Q85,190 95,190 Q105,190 115,170 Q125,150 115,130 L75,130" fill="#e91e63" />
+                    
+                    <!-- Dress -->
+                    <path d="M75,170 Q70,200 80,230 Q90,250 100,250 Q110,250 120,230 Q130,200 125,170 L75,170" fill="#e91e63" />
+                    
+                    <!-- Arms -->
+                    <path d="M75,150 Q55,160 65,180 Q75,200 95,190" fill="#f9d5bb" />
+                    <path d="M105,150 Q125,160 115,180 Q105,200 85,190" fill="#f9d5bb" />
+                    
+                    <!-- Legs -->
+                    <path d="M85,230 Q80,270 85,310 Q90,330 95,320" fill="#f9d5bb" />
+                    <path d="M95,230 Q100,270 95,310 Q90,330 85,320" fill="#f9d5bb" />
+                    
+                    <!-- Face -->
+                    <circle cx="80" cy="95" r="3" fill="#333" />
+                    <circle cx="100" cy="95" r="3" fill="#333" />
+                    <path d="M85,110 Q90,115 95,110" stroke="#333" stroke-width="2" fill="none" />
+                </svg>
+            </div>
+            
+            <!-- Hugging Couple -->
+            <div class="couple-hugging" id="coupleHugging">
+                <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                    <!-- Combined silhouette of hugging couple -->
+                    <!-- Boy in hug -->
+                    <path d="M150,100 Q170,80 190,100 Q210,120 200,140 Q190,160 170,150 Q150,160 140,140 Q130,120 150,100" fill="#3a2c1e" />
+                    <circle cx="170" cy="130" r="30" fill="#f9d5bb" />
+                    <path d="M155,160 Q145,180 160,200 Q175,220 185,210 Q195,200 190,180 Q185,160 175,160" fill="#4a6fa5" />
+                    <path d="M155,160 Q135,170 140,190 Q145,210 160,220 Q175,230 185,220" fill="#4a6fa5" />
+                    <path d="M185,210 Q195,230 190,250 Q185,270 175,280 Q165,290 170,310 Q175,330 180,320" fill="#2c3e50" />
+                    <path d="M175,160 Q195,150 200,170 Q205,190 195,210" fill="#4a6fa5" />
+                    
+                    <!-- Girl in hug -->
+                    <path d="M250,100 Q270,80 290,100 Q310,120 300,140 Q290,160 270,150 Q250,160 240,140 Q230,120 250,100" fill="#8d6e63" />
+                    <circle cx="270" cy="130" r="30" fill="#f9d5bb" />
+                    <path d="M255,160 Q245,180 260,200 Q275,220 285,210 Q295,200 290,180 Q285,160 275,160" fill="#e91e63" />
+                    <path d="M255,160 Q235,170 240,190 Q245,210 260,220 Q275,230 285,220" fill="#e91e63" />
+                    <path d="M285,210 Q295,230 290,250 Q285,270 275,280 Q265,290 270,310 Q275,330 280,320" fill="#f9d5bb" />
+                    <path d="M275,160 Q295,150 300,170 Q305,190 295,210" fill="#e91e63" />
+                    
+                    <!-- Hugging arms -->
+                    <path d="M185,210 Q205,220 220,210 Q235,200 240,180 Q245,160 255,160" fill="#f9d5bb" />
+                    <path d="M275,160 Q285,160 295,170 Q305,180 300,200 Q295,220 285,210" fill="#4a6fa5" />
+                    
+                    <!-- Faces -->
+                    <circle cx="160" cy="125" r="3" fill="#333" />
+                    <circle cx="180" cy="125" r="3" fill="#333" />
+                    <path d="M165,135 Q170,140 175,135" stroke="#333" stroke-width="2" fill="none" />
+                    
+                    <circle cx="260" cy="125" r="3" fill="#333" />
+                    <circle cx="280" cy="125" r="3" fill="#333" />
+                    <path d="M265,135 Q270,140 275,135" stroke="#333" stroke-width="2" fill="none" />
+                </svg>
+            </div>
             
             <!-- Hearts -->
             <div class="heart" id="heart1">♥</div>
@@ -328,41 +391,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if images are loaded
-            const images = [
-                'https://i.ibb.co/0Qz0h9R/boy-standing.png',
-                'https://i.ibb.co/6nL7qJ0/girl-standing.png',
-                'https://i.ibb.co/0Q4s9Y0/couple-hugging.png'
-            ];
-            
-            let loadedCount = 0;
-            
-            images.forEach(src => {
-                const img = new Image();
-                img.onload = () => {
-                    loadedCount++;
-                    if (loadedCount === images.length) {
-                        document.getElementById('loading').style.display = 'none';
-                        startAnimation();
-                    }
-                };
-                img.onerror = () => {
-                    // If images fail to load, use CSS-drawn characters as fallback
-                    console.error('Failed to load image: ' + src);
-                    loadedCount++;
-                    if (loadedCount === images.length) {
-                        document.getElementById('loading').style.display = 'none';
-                        startAnimation();
-                    }
-                };
-                img.src = src;
-            });
-            
-            // Fallback in case images don't load within 5 seconds
-            setTimeout(() => {
-                document.getElementById('loading').style.display = 'none';
-                startAnimation();
-            }, 5000);
+            startAnimation();
         });
 
         function startAnimation() {
@@ -442,8 +471,5 @@
             startAnimation();
         }
     </script>
-    
-    <!-- Loading message -->
-    <div class="loading" id="loading">Loading romantic scene...</div>
 </body>
 </html>
